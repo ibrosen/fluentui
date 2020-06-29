@@ -19,7 +19,7 @@ export type ClassDictionary = Record<string, string>;
 export type ClassFunction = (state: GenericDictionary, slots: GenericDictionary) => ClassDictionary;
 
 // @public (undocumented)
-export interface ComponentWithAs<TElementType extends React.ElementType = 'div', TProps = {}> extends React.FunctionComponent {
+export interface ComponentWithAs<TElementType extends React.ElementType = 'div', TProps = {}> extends React.FunctionComponent<TProps> {
     // (undocumented)
     <TExtendedElementType extends React.ElementType = TElementType>(props: Omit<PropsOfElement<TExtendedElementType>, 'as' | keyof TProps> & {
         as?: TExtendedElementType;

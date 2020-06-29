@@ -8,14 +8,7 @@ import cx from 'classnames';
 import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 import computeScrollIntoView from 'compute-scroll-into-view';
 
-import {
-  DebounceResultFn,
-  ShorthandRenderFunction,
-  ShorthandValue,
-  ShorthandCollection,
-  WithAsProp,
-  withSafeTypeForAs,
-} from '../../types';
+import { DebounceResultFn, ShorthandRenderFunction, ShorthandValue, ShorthandCollection } from '../../types';
 import { ComponentSlotStylesInput, ComponentVariablesInput } from '@fluentui/styles';
 import Downshift, {
   DownshiftState,
@@ -278,7 +271,16 @@ export const dropdownSlotClassNames: DropdownSlotClassNames = {
   triggerButton: `${dropdownClassName}__trigger-button`,
 };
 
-class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, DropdownState> {
+/**
+ * A Dropdown allows user to select one or more values from a list of options.
+ * Can be created with search and multi-selection capabilities.
+ *
+ * @accessibility
+ * Implements [ARIA Combo Box](https://www.w3.org/TR/wai-aria-practices-1.1/#combobox) design pattern, uses aria-live to announce state changes.
+ * @accessibilityIssues
+ * [Issue 991203: VoiceOver doesn't narrate properly elements in the input/combobox](https://bugs.chromium.org/p/chromium/issues/detail?id=991203)
+ */
+class Dropdown extends AutoControlledComponent<DropdownProps, DropdownState> {
   buttonRef = React.createRef<HTMLElement>();
   inputRef = React.createRef<HTMLInputElement | undefined>() as React.MutableRefObject<HTMLInputElement | undefined>;
   listRef = React.createRef<HTMLElement>();
@@ -352,7 +354,6 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
 
   static defaultProps = {
     align: 'start',
-    as: 'div',
     clearIndicator: {},
     itemToString: item => {
       if (!item || React.isValidElement(item)) {
@@ -1592,13 +1593,4 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
   }, Dropdown.charKeyPressedCleanupTime);
 }
 
-/**
- * A Dropdown allows user to select one or more values from a list of options.
- * Can be created with search and multi-selection capabilities.
- *
- * @accessibility
- * Implements [ARIA Combo Box](https://www.w3.org/TR/wai-aria-practices-1.1/#combobox) design pattern, uses aria-live to announce state changes.
- * @accessibilityIssues
- * [Issue 991203: VoiceOver doesn't narrate properly elements in the input/combobox](https://bugs.chromium.org/p/chromium/issues/detail?id=991203)
- */
-export default withSafeTypeForAs<typeof Dropdown, DropdownProps>(Dropdown);
+export default Dropdown;

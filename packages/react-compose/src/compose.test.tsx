@@ -43,7 +43,7 @@ describe('compose', () => {
   });
 
   it('can pass shorthandConfig via composeOptions', () => {
-    const BaseComponent = compose(
+    const BaseComponent = compose<'div', { content?: string }, {}, {}, {}>(
       (props, ref, composeOptions) => {
         return (
           <div
@@ -60,9 +60,9 @@ describe('compose', () => {
       },
     );
 
-    const ComposedComponent = compose(BaseComponent, {
+    const ComposedComponent = compose<'div', { children?: React.ReactNode }, {}, {}, {}>(BaseComponent, {
       shorthandConfig: {
-        mappedProp: 'as',
+        mappedProp: 'children',
       },
     });
 
@@ -71,7 +71,7 @@ describe('compose', () => {
 
     expect(wrapper.prop('data-mapped-prop')).toEqual('content');
     expect(wrapper.prop('data-allows-jsx')).toEqual(false);
-    expect(composedWrapper.prop('data-mapped-prop')).toEqual('as');
+    expect(composedWrapper.prop('data-mapped-prop')).toEqual('children');
     expect(composedWrapper.prop('data-allows-jsx')).toEqual(false);
   });
 

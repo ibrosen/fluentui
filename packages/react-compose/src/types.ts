@@ -18,7 +18,7 @@ export type PropsOfElement<
 
 // tslint:disable-next-line:interface-name
 export interface ComponentWithAs<TElementType extends React.ElementType = 'div', TProps = {}>
-  extends React.FunctionComponent {
+  extends React.FunctionComponent<TProps> {
   <TExtendedElementType extends React.ElementType = TElementType>(
     props: Omit<PropsOfElement<TExtendedElementType>, 'as' | keyof TProps> & { as?: TExtendedElementType } & TProps,
   ): JSX.Element | null;
