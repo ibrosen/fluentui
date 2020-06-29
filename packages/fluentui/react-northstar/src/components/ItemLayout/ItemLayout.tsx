@@ -116,7 +116,7 @@ const ItemLayout: ComponentWithAs<'div', ItemLayoutProps> & FluentComponentStati
 
   const element = (
     <Layout
-      as={as}
+      as={as as React.ElementType}
       className={classes.root}
       styles={resolvedStyles.root}
       rootCSS={rootCSS}

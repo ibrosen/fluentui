@@ -74,7 +74,7 @@ const SplitButtonToggle: ComponentWithAs<'button', SplitButtonToggleProps> &
   const getA11Props = useAccessibility(accessibility, {
     debugName: SplitButtonToggle.displayName,
     mapPropsToBehavior: () => ({
-      as,
+      as: String(as),
       disabled,
     }),
     actionHandlers: {

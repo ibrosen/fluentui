@@ -111,7 +111,7 @@ const AlertDismissAction: ComponentWithAs<'button', AlertDismissActionProps> &
   const getA11Props = useAccessibility(accessibility, {
     debugName: AlertDismissAction.displayName,
     mapPropsToBehavior: () => ({
-      as,
+      as: String(as),
       disabled,
     }),
     actionHandlers: {

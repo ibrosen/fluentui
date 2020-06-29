@@ -101,7 +101,7 @@ const CarouselPaddle: ComponentWithAs<'button', CarouselPaddleProps> &
   const getA11Props = useAccessibility(accessibility, {
     debugName: CarouselPaddle.displayName,
     mapPropsToBehavior: () => ({
-      as,
+      as: String(as),
       disabled,
     }),
     actionHandlers: {

@@ -80,7 +80,7 @@ export const dropdownItemSlotClassNames: DropdownItemSlotClassNames = {
  * A DropdownItem represents an option of Dropdown list.
  * Displays an item with optional rich media metadata.
  */
-const DropdownItem: ComponentWithAs<'li', DropdownItemProps & { index: number }> &
+const DropdownItem: ComponentWithAs<'li', DropdownItemProps> &
   FluentComponentStaticProps<DropdownItemProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(DropdownItem.displayName, context.telemetry);

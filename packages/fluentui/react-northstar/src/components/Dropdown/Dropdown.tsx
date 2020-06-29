@@ -1,3 +1,4 @@
+import { ComponentWithAs } from '@fluentui/react-bindings';
 import { handleRef, Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import { indicatorBehavior } from '@fluentui/accessibility';
@@ -1613,4 +1614,7 @@ class Dropdown extends AutoControlledComponent<DropdownProps, DropdownState> {
   }, Dropdown.charKeyPressedCleanupTime);
 }
 
-export default Dropdown;
+export default (Dropdown as unknown) as ComponentWithAs<'div', DropdownProps> & {
+  Item: typeof DropdownItem;
+  SelectedItem: typeof DropdownSelectedItem;
+};

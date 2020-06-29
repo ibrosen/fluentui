@@ -134,7 +134,7 @@ const AccordionTitle: ComponentWithAs<'dt', AccordionTitleProps> &
     mapPropsToBehavior: () => ({
       hasContent: !!content,
       canBeCollapsed,
-      as,
+      as: String(as),
       active,
       disabled,
       accordionContentId,
