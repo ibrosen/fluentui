@@ -60,9 +60,9 @@ describe('compose', () => {
       },
     );
 
-    const ComposedComponent = compose<'div', { children?: React.ReactNode }, {}, {}, {}>(BaseComponent, {
+    const ComposedComponent = compose<'div', { slot?: string }, {}, {}, {}>(BaseComponent, {
       shorthandConfig: {
-        mappedProp: 'children',
+        mappedProp: 'slot',
       },
     });
 
@@ -71,7 +71,7 @@ describe('compose', () => {
 
     expect(wrapper.prop('data-mapped-prop')).toEqual('content');
     expect(wrapper.prop('data-allows-jsx')).toEqual(false);
-    expect(composedWrapper.prop('data-mapped-prop')).toEqual('children');
+    expect(composedWrapper.prop('data-mapped-prop')).toEqual('slot');
     expect(composedWrapper.prop('data-allows-jsx')).toEqual(false);
   });
 

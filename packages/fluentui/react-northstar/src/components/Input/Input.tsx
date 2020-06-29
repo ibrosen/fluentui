@@ -269,6 +269,7 @@ const Input = compose<'div', InputProps, InputStylesProps, {}, {}>(
                 innerRef={(inputElement: HTMLElement) => {
                   handleRef(inputRef, inputElement);
                   handleRef(props.inputRef, inputElement);
+                  handleRef(ref, inputElement);
                 }}
               >
                 {createShorthand(composeOptions.slots.control, input || type, {
@@ -280,7 +281,6 @@ const Input = compose<'div', InputProps, InputStylesProps, {}, {}>(
                       type,
                       required,
                       value: value || '',
-                      ref,
                       className: inputSlotClassNames.input,
                       styles: resolvedStyles.input,
                       onChange: handleChange,
